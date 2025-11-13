@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Features
+
+### Dark and Light Mode
+
+This project supports automatic dark mode detection based on your system preferences. You can also manually toggle between dark and light modes using the theme switcher located in the application's header. Your preference will be saved in your browser's local storage for future visits.
+
 ## Available Scripts
 
 In the project directory, you can run:

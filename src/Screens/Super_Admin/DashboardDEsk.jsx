@@ -64,6 +64,7 @@ import {
 import OverviewStats from './components/OverviewStats';
 import SchoolsStatus from './components/SchoolsStatus';
 import UsersStatus from './components/UsersStatus';
+import ThemeToggle from '../../components/ThemeToggle';
 
 import { dashboardAPI } from './services/api';
 import { useAuth } from '../../context/AuthContext';
@@ -249,26 +250,7 @@ const renderSectionContent = () => {
 };
 
   const drawer = (
-    <Box
-      sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        background: 'linear-gradient(180deg, #1e1b4b 0%, #312e81 100%)',
-        position: 'relative',
-        overflow: 'hidden',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '200px',
-          background: 'radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15), transparent 70%)',
-          pointerEvents: 'none',
-        }
-      }}
-    >
+    <div className="h-full flex flex-col bg-white dark:bg-gray-800 relative overflow-hidden">
       {/* Header Section avec bouton de toggle */}
       <Box
         sx={{
@@ -594,7 +576,7 @@ const renderSectionContent = () => {
           )}
         </IconButton>
       </Box>
-    </Box>
+    </div>
   );
 
   if (!isAuthenticated) {
@@ -684,12 +666,7 @@ const renderSectionContent = () => {
   }
 
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      bgcolor: '#f8fafc', 
-      minHeight: '100vh',
-      background: '$',
-    }}>
+    <div className="flex bg-gray-100 dark:bg-gray-900 min-h-screen">
       <CssBaseline />
       
       {/* Sidebar Drawer avec marge */}
@@ -765,39 +742,7 @@ const renderSectionContent = () => {
        <AppBar
   position="fixed"
   elevation={0}
-  sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    background: 'linear-gradient(180deg, #1e1b4b 0%, #312e81 100%)',
-    overflow: 'hidden',
-    backdropFilter: 'blur(8px)',
-    borderBottom: '1px solid rgba(255,255,255,0.1)',
-    zIndex: (theme) => theme.zIndex.drawer + 1,
-    width: { 
-      xs: '90%',
-      sm: `calc(99% - ${sidebarCollapsed ? collapsedDrawerWidth : drawerWidth}px - 32px)` 
-    },
-    ml: { 
-      xs: 0,
-      sm: `${sidebarCollapsed ? collapsedDrawerWidth : drawerWidth}px` 
-    },
-    mr: { sm: 2 },
-    mt:2 ,
-    mb: 3,
-    borderRadius: { sm: '20px' },
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: '180px',
-      background:
-        'radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15), transparent 70%)',
-      pointerEvents: 'none',
-    },
-  }}
+  className="bg-white dark:bg-gray-800"
 >
           <Toolbar sx={{ px: 3, py: 1, position: 'relative', zIndex: 1 }}>
             {/* Menu Icon (mobile) */}
@@ -822,16 +767,11 @@ const renderSectionContent = () => {
               <Typography
                 variant="h5"
                 component="h1"
-                sx={{
-                  fontWeight: 700,
-                  color: 'white',
-                  letterSpacing: '0.5px',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                }}
+                className="font-bold text-gray-800 dark:text-white"
               >
                 {menuItems.find(item => item.id === activeSection)?.label || 'Dashboard'}
               </Typography>
-              <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.8)' }}>
+              <Typography variant="caption" className="text-gray-600 dark:text-gray-400">
                 Welcome back, {getUserDisplayName()}
               </Typography>
             </Box>
@@ -839,7 +779,7 @@ const renderSectionContent = () => {
             {/* Actions */}
             <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
              
-
+              <ThemeToggle />
               <IconButton
                 onClick={handleProfileMenuOpen}
                 sx={{
@@ -943,7 +883,7 @@ const renderSectionContent = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </div>
   );
 };
 
