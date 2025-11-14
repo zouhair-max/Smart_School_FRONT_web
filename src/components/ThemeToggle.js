@@ -8,7 +8,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
+      className="p-2 rounded-full text-secondary hover:bg-secondary/20 focus:outline-none"
     >
       {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
     </button>
