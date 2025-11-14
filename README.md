@@ -8,6 +8,36 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project supports automatic dark mode detection based on your system preferences. You can also manually toggle between dark and light modes using the theme switcher located in the application's header. Your preference will be saved in your browser's local storage for future visits.
 
+**Extending the Theme**
+
+To add new colors or customize existing ones, follow these steps:
+
+1.  **Define CSS Variables:** Open `src/index.css` and add your new color variables under the `:root` and `.dark` selectors.
+
+    ```css
+    :root {
+      --color-new-color: 255 0 0;
+    }
+
+    .dark {
+      --color-new-color: 0 255 0;
+    }
+    ```
+
+2.  **Integrate with Tailwind:** Open `tailwind.config.js` and add the new color to the `theme.extend.colors` object.
+
+    ```javascript
+    theme: {
+      extend: {
+        colors: {
+          'new-color': 'rgb(var(--color-new-color))',
+        },
+      },
+    },
+    ```
+
+3.  **Use in Components:** You can now use the new color in your components with Tailwind's utility classes (e.g., `bg-new-color`, `text-new-color`).
+
 ## Available Scripts
 
 In the project directory, you can run:
